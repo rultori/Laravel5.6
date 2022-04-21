@@ -14,7 +14,7 @@
     </ul> --}}
 
     {{-- las reglas de validación las encontrramos en:  laravel.com/docs/validation --}}
-    <form method="POST" action=" {{ route('contact') }}">
+    <form method="POST" action=" {{ route('messages.store') }}">
         @csrf
         <input type="text" name="name" placeholder="Nombre.." value="{{ old('name')}}" ><br>
         {!! $errors->first('name', '<small>:message</small><br>') !!}

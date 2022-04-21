@@ -1,10 +1,11 @@
 {
     "Home" : "Inicio",
     "About" : "Quienes somos",
-    "Portfolio" : "Portafolio",
+    "Projects" : "Portafolio",
     "Contact" : "Contacto",
     "Send" : "Enviar",
     "I need yur name" : "Necesitro tu nombre",
     "create" : "crear",
-    "edit" : "editar"
+    "edit" : "editar",
+    "There are no projects to show" : "No hay proyectos para mostrar"
 }
