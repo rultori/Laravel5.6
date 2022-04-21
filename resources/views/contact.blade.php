@@ -3,34 +3,63 @@
 @section('title', 'Contact')
 
 @section('content')
-    <h1>{{ __('Contact') }}</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+
+            <form class="bg-white shadow rounded py-3 px-4"
+                method="POST"
+                action=" {{ route('messages.store') }}"
+            >
+                    @csrf
+                    <h1 class="display-5">{{ __('Contact') }}</h1>
+                    <hr>
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input class="form-control bg-light shadow-sm border-0"
+                            id="name"                                        name="name"
+                            placeholder="Nombre.."
+                            value="{{ old('name') }}">
+                            {!! $errors->first('name', '<small class="text-danger">:message</small><br>') !!}
+                    </div>
 
 
-    {{-- <ul>
-        @if($errors->any())
-            @foreach ( $errors->all() as $error )
-                <li> {{ $error }} </li>
-            @endforeach
-        @endif
-    </ul> --}}
+                    <div class="form-group">
+                        <label for="name">Email</label>
+                        <input class="form-control bg-light shadow-sm border-0"
+                            type="text"
+                            name="email"
+                            placeholder="Email.."
+                            value="{{ old('email') }}" >
+                            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
+                    </div>
 
-    {{-- las reglas de validación las encontrramos en:  laravel.com/docs/validation --}}
-        <form method="POST" action=" {{ route('messages.store') }}">
-            @csrf
-            <input type="text" name="name" placeholder="Nombre.." value="{{ old('name')}}" ><br>
-            {!! $errors->first('name', '<small>:message</small><br>') !!}
+                    <div class="form-group">
+                        <label for="name">Asunto</label>
+                        <input class="form-control bg-light shadow-sm border-0"
+                            type="text"
+                            name="subject"
+                            placeholder="Asunto.."
+                            value="{{ old('subject') }}"><br>
+                            {!! $errors->first('subject', '<small class="text-danger">:message</small><br>') !!}
+                    </div>
 
-            <input type="text" name="email" placeholder="Email.." value="{{ old('email') }}" ><br>
-            {!! $errors->first('email', '<small>:message</small><br>') !!}
+                    <div class="form-group">
+                        <label for="name">Contenido</label>
+                        <textarea class="form-control bg-light shadow-sm border-0"
+                            name="content"
+                            placeholder="Mensaje.." >
+                            {{ old('content') }}</textarea><br>
+                            {!! $errors->first('content', '<small class="text-danger">:message</small><br>') !!}
+                    </div>
 
-            <input type="text" name="subject" placeholder="Asunto.." value="{{ old('subject') }}"><br>
-            {!! $errors->first('subject', '<small>:message</small><br>') !!}
+                    <button class="btn btn-primary btn-lg btn-block">@lang('Send')</button>
 
-            <textarea name="content" placeholder="Mensaje.." >{{ old('content') }}</textarea><br>
-            {!! $errors->first('content', '<small>:message</small><br>') !!}
+            </form>
+        </div>
+    </div>
+</div>
 
-            <button>@lang('Send')</button>
-
-        </form>
 
 @endsection
