@@ -52,7 +52,7 @@ class ProjectController extends Controller
             'description' => request('description'),
         ]); */
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue creado con éxito');
 
     }
 
@@ -67,7 +67,13 @@ class ProjectController extends Controller
     public function update(Project $project, SaveProjectRequest $request)
     {
         $project->update($request->validated());
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('status', 'El proyecto se actualizó com éxito.');
+    }
+
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return redirect()->route('projects.index')->with('status', 'El proyecto se  eliminó con éxito');
     }
 
  }

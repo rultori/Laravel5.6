@@ -23,6 +23,6 @@ class MessageController extends Controller
 
         // return new MessageReceived($message);
 
-        return 'Mensaje enviado';
+        return back()->with('status', 'Recibimos tu mensaje, te responderemos en menos de 24 horas.');
     }
 }
