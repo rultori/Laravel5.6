@@ -1,6 +1,8 @@
 <?php
 
 //namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // $portfolio = [
@@ -15,8 +17,9 @@ Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
 
 Route::resource('portafolio', 'ProjectController')
-    ->names('projects')
-    ->parameters(['portafolio' => 'project']);
+    ->parameters(['portafolio' => 'project'])
+    ->names('projects');
+
 
 // Route::get('/portafolio', 'ProjectController@index')->name('projects.index');
 // Route::get('/portafolio/crear', 'ProjectController@create')->name('projects.create');
@@ -47,3 +50,7 @@ Route::post('contact', 'MessageController@store')->name('messages.store');
     /* return view('home',compact('nombre'));
 
 })->name('home'); */
+
+Auth::routes(['register' => true]);
+
+// Route::get('/home', 'HomeController@index')->name('home');
