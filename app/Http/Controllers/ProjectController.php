@@ -25,7 +25,7 @@ class ProjectController extends Controller
         // $proyects = Project::orderBy('created_at','DESC')->get();
 
         return view('projects.index', [
-            'projects' => Project::latest()->paginate()
+            'projects' => Project::latest()->paginate('5')
         ]);
 
     }

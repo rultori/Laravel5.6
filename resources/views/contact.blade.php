@@ -17,44 +17,76 @@
                     <hr>
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input class="form-control bg-light shadow-sm border-0"
-                            id="name"                                        name="name"
-                            placeholder="Nombre.."
-                            value="{{ old('name') }}">
-                            {!! $errors->first('name', '<small class="text-danger">:message</small><br>') !!}
+                        <input class="form-control bg-light shadow-sm  {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                            id="name"
+                            name="name"
+                            placeholder="Escribe tu nombre.."
+                            value="{{ old('name') }}"
+                            autofocus
+                        >
+                            @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
+                            {{-- {!! $errors->first('name', '<small class="text-danger">:message</small><br>') !!} --}}
                     </div>
-
 
                     <div class="form-group">
                         <label for="name">Email</label>
-                        <input class="form-control bg-light shadow-sm border-0"
+                        <input class="form-control bg-light shadow-sm {{ $errors->has('email') ? ' is-invalid' : '' }} "
                             type="text"
                             name="email"
-                            placeholder="Email.."
-                            value="{{ old('email') }}" >
-                            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
+                            placeholder="Escribe tu email.."
+                            value="{{ old('email') }}"
+                        >
+                            @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+
+                            {{-- {!! $errors->first('email', '<small class="text-danger">:message</small>') !!} --}}
                     </div>
 
                     <div class="form-group">
                         <label for="name">Asunto</label>
-                        <input class="form-control bg-light shadow-sm border-0"
+                        <input class="form-control bg-light shadow-sm {{ $errors->has('subject') ? ' is-invalid' : '' }}"
                             type="text"
                             name="subject"
-                            placeholder="Asunto.."
-                            value="{{ old('subject') }}"><br>
-                            {!! $errors->first('subject', '<small class="text-danger">:message</small><br>') !!}
+                            placeholder="Escibe un asunto.."
+                            value="{{ old('subject') }}"
+                        >
+                            @if ($errors->has('subject'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('subject') }}</strong>
+                                    </span>
+                            @endif
+
+                            {{-- {!! $errors->first('subject', '<small class="text-danger">:message</small><br>') !!} --}}
                     </div>
 
                     <div class="form-group">
                         <label for="name">Contenido</label>
-                        <textarea class="form-control bg-light shadow-sm border-0"
+                        <textarea class="form-control bg-light shadow-sm {{ $errors->has('content') ? ' is-invalid' : '' }}"
                             name="content"
-                            placeholder="Mensaje.." >
-                            {{ old('content') }}</textarea><br>
-                            {!! $errors->first('content', '<small class="text-danger">:message</small><br>') !!}
+                            placeholder="Escribe un mensaje.." >
+                            {{ old('content') }}
+                        </textarea>
+                            @if ($errors->has('content'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('content') }}</strong>
+                                    </span>
+                            @endif
+
+                            {{-- {!! $errors->first('content', '<small class="text-danger">:message</small><br>') !!} --}}
                     </div>
 
                     <button class="btn btn-primary btn-lg btn-block">@lang('Send')</button>
+                    <a class="btn btn-lg btn-outline-primary btn-block"
+                        href="{{ route('projects.index') }}">
+                        Cancelar
+                    </a>
 
             </form>
         </div>

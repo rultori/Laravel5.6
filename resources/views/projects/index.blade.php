@@ -6,9 +6,9 @@
 
 <div class="container">
     <div class="d-flex justify-content-between align-item-center mb-3">
-        <h1 class="display-4 mb-0">{{ __('Projects') }}</h1>
+        <h1 class="display-5 mb-0">{{ __('Projects') }}</h1>
         @auth
-            <a class="btn btn-primary pt-2"
+            <a class="btn btn-primary "
                 href="{{ route('projects.create') }}"
             >Crear un proyecto
             </a>

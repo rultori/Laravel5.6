@@ -23,17 +23,20 @@
                         <a class="btn btn-primary"
                             href="{{ route('projects.edit', $project) }}">Editar</a>
                         <a class="btn btn-danger"
-                            href="#" onclick="document.getElementById('delete-project').submit">Eliminar </a>
+                            href="#"
+                            onclick="document.getElementById('delete-project').submit()">Eliminar </a>
                     </div>
 
-                    <form class="d-none"
-                        id="delete-project"
+
+                    <form id="delete-project"
+                        class="d-none"
                         method="POST"
                         action="{{ route('projects.destroy', $project) }}"
                     >
                         @csrf @method('DELETE')
 
                     </form>
+
                 @endauth
             </div>
         </div>
