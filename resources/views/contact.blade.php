@@ -83,7 +83,7 @@
                     </div>
 
                     <button class="btn btn-primary btn-lg btn-block">@lang('Send')</button>
-                    <a class="btn btn-lg btn-outline-primary btn-block"
+                    <a class="btn qbtn-lg btn-outline-primary btn-block"
                         href="{{ route('projects.index') }}">
                         Cancelar
                     </a>
