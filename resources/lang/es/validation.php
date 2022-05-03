@@ -163,6 +163,7 @@ return [
         'email' => 'correo electronico',
         'subject' => 'asunto',
         'content' => 'mensaje',
+        'image' => 'imagen',
     ],
 
 ];

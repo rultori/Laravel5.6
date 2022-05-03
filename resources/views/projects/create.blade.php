@@ -17,6 +17,7 @@
                 <h1 class="display-4">Nuevo proyecto</h1>
                 <hr>
                 @include('projects._form', ['btnText'=> 'Guardar'])
+
             </form>
         </div>
     </div>
