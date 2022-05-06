@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Project;
-use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Http\Request;
+use  Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -25,7 +26,7 @@ class ProjectController extends Controller
         // $proyects = Project::orderBy('created_at','DESC')->get();
 
         return view('projects.index', [
-            'projects' => Project::latest()->paginate('5')
+            'projects' => Project::latest()->paginate('10')
         ]);
 
     }
@@ -55,13 +56,12 @@ class ProjectController extends Controller
 
         $project->save();
 
-        // Project::create(request()->only('title', 'url', 'description'));
+        $image = Image::make(storage::get($project->image))
+            ->widen(600)
+            ->limitColors(255)
+            ->encode();
 
-       /* Project::create([
-            'title' => request('title'),
-            'url' => request('url'),
-            'description' => request('description'),
-        ]); */
+        storage::put($project->image, (string) $image);
 
         return redirect()->route('projects.index')->with('status', 'El proyecto fue creado con éxito');
 
@@ -84,6 +84,16 @@ class ProjectController extends Controller
             $project->image = $request->file('image')->store('images');
 
             $project->save();
+            //optimización de imagen
+
+            // Image::make(storage_path('app/public/'. $project->image));
+            $image = Image::make(storage::get($project->image))
+                ->widen(600)
+                ->limitColors(255)
+                ->encode();
+
+            storage::put($project->image, (string) $image);
+
         }
         else {
 

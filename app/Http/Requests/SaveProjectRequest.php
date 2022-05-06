@@ -36,7 +36,7 @@ class SaveProjectRequest extends FormRequest
             ],
             'image' => [
                 $this->route('project') ? 'nullable' : 'required',
-                'mimes:jpg, pjg',
+                'mimes:jpg,pjg,png',
                 // 'max:2000'
                 // 'dimensions:min_width=600,min_heigth=400'
             ],
