@@ -2,7 +2,7 @@
 
 @if ($project->image)
     <img class="card-img-top mb-2"
-    style="height: 50px; object-fit: cover"
+    style="height:200px; object-fit:cover"
     src="/storage/{{ $project->image }}"
     alt="{{ $project->title }}"
     >

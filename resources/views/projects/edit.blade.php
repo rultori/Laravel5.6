@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+            <div class="col-12 col-sm-5 col-lg-6 mx-auto">
 
 
                 @include('partials.validation-errors')
